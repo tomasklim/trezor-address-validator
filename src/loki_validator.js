@@ -1,19 +1,14 @@
-const { addressType } = require('../src/crypto/utils');
+const { addressType } = require('./crypto/utils');
 var cryptoUtils = require('./crypto/utils')
 var cnBase58 = require('./crypto/cnBase58')
 
 var DEFAULT_NETWORK_TYPE = 'prod'
-var testnetRegTest = new RegExp(
-  `^[A9][123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{94}$`
-)
+
 var addressRegTest = new RegExp(
-  '^4[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{94}$'
-)
-var subAddressRegTest = new RegExp(
-  '^8[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{94}$'
+  '^L[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{94}$'
 )
 var integratedAddressRegTest = new RegExp(
-  '^4[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{105}$'
+  '^L[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{105}$'
 )
 
 function validateNetwork(decoded, currency, networkType, addressType) {
@@ -50,14 +45,8 @@ module.exports = {
   isValidAddress: function(address, currency, networkType) {
     networkType = networkType || DEFAULT_NETWORK_TYPE
     var addressType = 'standard'
-    if (networkType === 'testnet') {
-      if (!testnetRegTest.test(address)) {
-        return false;
-      }
-    } else if (!addressRegTest.test(address)) {
-      if (subAddressRegTest.test(address)) {
-        addressType = 'subaddress'
-      } else if (integratedAddressRegTest.test(address)) {
+    if (!addressRegTest.test(address)) { // same regex for mainnet and testnet
+      if (integratedAddressRegTest.test(address)) {
         addressType = 'integrated'
       } else {
         return false
