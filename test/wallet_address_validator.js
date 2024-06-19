@@ -845,14 +845,6 @@ describe('WAValidator.validate()', function () {
             isValidAddressType('SBGWKM3CD4IL47QN6X54N6Y33T3JDNVI6AIJ6CD5IM47HG3IG4O36XCU', 'stellar', 'prod', undefined);
         });
 
-        it('should return true for correct binance address', function () {
-            valid('bnb1qfmufc2q30cgw82ykjlpfeyauhcf5mad6p5y8t', 'binance');
-            valid('bnb1hcqaqelrpd30cvdrwamxw3g2u390qecz0zr9fr', 'binance');
-            valid('bnb16hw73zvzmye7x58mqauagf82gd5d3stven24jk', 'binance');
-            valid('bnb1xlvns0n2mxh77mzaspn2hgav4rr4m8eerfju38', 'binance');
-            valid('bnb16hw73zvzmye7x58mqauagf82gd5d3stven24jk', 'bnb');
-        });
-
         it('should return false for incorrect binance address', function () {
             invalid('lol1qfmufc2q30cgw82ykjlpfeyauhcf5mad6p5y8t', 'binance');
         });
@@ -1259,15 +1251,6 @@ describe('WAValidator.validate()', function () {
             invalid('SAB5556L5AN5KSR5WF7UOEFDCIODEWEO7H2UR4S5R62DFTQOGLKOVZDY', 'stellar');
             invalid('gWRYUerEKuz53tstxEuR3NCkiQDcV4wzFHmvLnZmj7PUqxW2wt', 'stellar');
             invalid('g4VPBPrHZkfE8CsjuG2S4yBQNd455UWmk', 'stellar');
-        });
-
-        it('should return false for incorrect binance addresses', function () {
-            commonTests('binance');
-            commonTests('bnb');
-            invalid('xrb_1f5e4w33ndqbkx4bw5jtp13kp5xghebfxcmw9hdt1f7goid1s4373w6tjdgu', 'bnb');
-            invalid('nano_1f5e4w33ndqbkx4bw5jtp13kp5xghebfxcmw9hdt1f7goid1s4373w6tjdgu', 'bnb');
-            invalid('xrb_1111111112111111111111111111111111111111111111111111hifc8npp', 'bnb');
-            invalid('nano_111111111111111111111111111111111111111111111111111hifc8npp', 'bnb');
         });
 
         it('should return false for incorrect xtz(tezos) address', function () {

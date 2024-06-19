@@ -65,7 +65,6 @@ npm install trezor-address-validator
 * Basic Attention Token/bat `'Basic Attention Token'` or `'bat'`
 * BeaverCoin/bvc `'BeaverCoin'` or `'bvc'`
 * BetterBetting/betr `'BetterBetting'` or `'betr'`
-* Binance/bnb `'Binance'` or `'bnb'`
 * Binance Smart Chain/bsc `'Binance Smart Chain'` or `'bsc'`
 * Binance USD/busd `'Binance USD'` or `'busd'`
 * BioCoin/bio `'BioCoin'` or `'bio'`
